@@ -33,7 +33,6 @@ var app = new Vue({
             var horario = `${hora} Uhr ${minute}`
             console.log("es ist ", horario);
 
-            var string = ""
             if(minute < 20){
                 if(minute == 15){
                     vm.horaTexto = `es ist viertel nach ${hora}`
@@ -62,12 +61,8 @@ var app = new Vue({
                 }
             }
 
-            //var horaRandom = Math.floor(Math.random() * (360 - 0)) + 0;
             document.getElementsByClassName("minute")[0].style.transform = `rotateZ(${minuteDeg}deg)`;
-            //var horaRandom = Math.floor(Math.random() * (360 - 0)) + 0;
             document.getElementsByClassName("hour")[0].style.transform = `rotateZ(${horaDeg}deg)`;
-
-            console.log(this.horaTexto);
 
             document.getElementById("horaTexto").innerHTML  = this.horaTexto;
 
