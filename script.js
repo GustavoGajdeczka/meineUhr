@@ -8,24 +8,32 @@ var app = new Vue({
     },
     methods: {
         hora:() => {
-            var horaDeg = Math.floor(Math.random() * (12 - 0)) + 0;
-            var minuteDeg = Math.floor(Math.random() * (60 - 0)) + 0;
+            // randomiza a hora e o dia
+            var hora = Math.floor(Math.random() * (12 - 0)) + 0;
+            var minute = Math.floor(Math.random() * (60 - 0)) + 0;
+            // randomiza o horario do dia
             var diaNoite = Math.floor(Math.random() * (3 - 1)) + 1;
-            console.log("Dia", diaNoite);
+
+            var minuteDeg = Math.floor(360 / 60 * minute);
+            var horaDeg = Math.floor(360 / 12 * hora) + (minute / 2);
+
             if(diaNoite == 1){
+                console.log("Dia");
                 document.getElementsByClassName("background")[0].style.background = "linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%)";
             }else{
+                console.log("Noite");
+                hora += 12;
                 document.getElementsByClassName("background")[0].style.background = "linear-gradient(0deg, rgb(71, 6, 118) 0%, rgb(11, 3, 108) 100%)"
 
             }
 
+            var horario = `${hora} Uhr ${minute}`
+            console.log("es ist ", horario);
 
-            console.log("HoraDeg", horaDeg);
-            console.log("MinuteDeg", minuteDeg);
-            var horaRandom = Math.floor(Math.random() * (360 - 0)) + 0;
-            document.getElementsByClassName("minute")[0].style.transform = `rotateZ(${horaRandom}deg)`;
-            var horaRandom = Math.floor(Math.random() * (360 - 0)) + 0;
-            document.getElementsByClassName("hour")[0].style.transform = `rotateZ(${horaRandom}deg)`;
+            //var horaRandom = Math.floor(Math.random() * (360 - 0)) + 0;
+            document.getElementsByClassName("minute")[0].style.transform = `rotateZ(${minuteDeg}deg)`;
+            //var horaRandom = Math.floor(Math.random() * (360 - 0)) + 0;
+            document.getElementsByClassName("hour")[0].style.transform = `rotateZ(${horaDeg}deg)`;
         }
     }
 })
