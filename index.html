@@ -12,6 +12,9 @@
     <div class="background"></div>
     <div id="app">
         <button v-on:click="hora()">wie spät ist es?</button>
+        <div class="texto">
+            <h1 id="horaTexto" class="horaTexto"></h1>
+        </div>
         <div class="center">
             <div class="clock">
                 <div class="clock-circle">
@@ -24,6 +27,7 @@
                     <div ref="minute" class="minute"></div>
                 </div>
             </div>
+            
         </div>
     </div>
     <div class="footer">

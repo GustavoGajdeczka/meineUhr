@@ -3,11 +3,14 @@ var app = new Vue({
     data(){
         return {
             h: "Hallo",
-            timeList: [12, 1,2,3,4,5,6,7,8,9,10,11]
+            horaTexto: ""
         }
     },
     methods: {
         hora:() => {
+            const vm = this;
+            console.clear();
+
             // randomiza a hora e o dia
             var hora = Math.floor(Math.random() * (12 - 0)) + 0;
             var minute = Math.floor(Math.random() * (60 - 0)) + 0;
@@ -30,10 +33,44 @@ var app = new Vue({
             var horario = `${hora} Uhr ${minute}`
             console.log("es ist ", horario);
 
+            var string = ""
+            if(minute < 20){
+                if(minute == 15){
+                    vm.horaTexto = `es ist viertel nach ${hora}`
+                }else{
+                    vm.horaTexto = `es ist ${minute} nach ${hora}`
+                }
+            }
+            if(minute > 40){
+                if(minute == 45){
+                    vm.horaTexto = `es ist viertel vor ${hora + 1}`
+                }else{
+                    vm.horaTexto = `es ist ${60 - minute} vor ${hora + 1}`
+                }
+            }
+
+            if(minute > 20 && minute < 40){
+                if(minute == 30){
+                    vm.horaTexto == `es ist halb ${hora + 1}`
+                }else{
+                    if(minute < 30){
+                        vm.horaTexto = `es ist ${30 - minute} vor halb ${hora + 1}`
+                    }else{
+                        vm.horaTexto = `es ist ${minute - 30} nach halb ${hora + 1}`
+
+                    }
+                }
+            }
+
             //var horaRandom = Math.floor(Math.random() * (360 - 0)) + 0;
             document.getElementsByClassName("minute")[0].style.transform = `rotateZ(${minuteDeg}deg)`;
             //var horaRandom = Math.floor(Math.random() * (360 - 0)) + 0;
             document.getElementsByClassName("hour")[0].style.transform = `rotateZ(${horaDeg}deg)`;
+
+            console.log(this.horaTexto);
+
+            document.getElementById("horaTexto").innerHTML  = this.horaTexto;
+
         }
     }
 })

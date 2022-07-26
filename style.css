@@ -80,6 +80,12 @@
     }
 }
 
+.texto{
+    position: fixed;
+    top: 450px;
+    z-index: 1000;
+}
+
 .footer{
     position: fixed;
     bottom: 0px;
