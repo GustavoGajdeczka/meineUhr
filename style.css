@@ -84,6 +84,9 @@
     position: fixed;
     top: 450px;
     z-index: 1000;
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+             1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+
 }
 
 .footer{

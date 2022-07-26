@@ -7,7 +7,7 @@ var app = new Vue({
         }
     },
     methods: {
-        hora:() => {
+        hora(){
             const vm = this;
             console.clear();
 
@@ -20,15 +20,18 @@ var app = new Vue({
             var minuteDeg = Math.floor(360 / 60 * minute);
             var horaDeg = Math.floor(360 / 12 * hora) + (minute / 2);
 
+
             if(diaNoite == 1){
                 console.log("Dia");
-                document.getElementsByClassName("background")[0].style.background = "linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%)";
             }else{
                 console.log("Noite");
                 hora += 12;
-                document.getElementsByClassName("background")[0].style.background = "linear-gradient(0deg, rgb(71, 6, 118) 0%, rgb(11, 3, 108) 100%)"
+                
 
             }
+
+            this.periodo(hora);
+
 
             var horario = `${hora} Uhr ${minute}`
             console.log("es ist ", horario);
@@ -66,6 +69,26 @@ var app = new Vue({
 
             document.getElementById("horaTexto").innerHTML  = this.horaTexto;
 
+        },
+        periodo(hora){
+            if(hora < 6){
+                document.getElementsByClassName("background")[0].style.background = "linear-gradient(0deg, rgb(11, 3, 80) 0%, rgba(34,120,180,1) 100%)"
+            }else{
+                if(hora > 6 && hora < 12){
+                    document.getElementsByClassName("background")[0].style.background = "linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%)";
+                }else{
+                    if(hora > 12 && hora < 18){
+                        document.getElementsByClassName("background")[0].style.background = "linear-gradient(0deg, rgb(241, 211, 13) 0%, rgba(253,255,150,1) 100%)";
+                    }else{
+                        if(hora > 18 && hora < 20){
+                            document.getElementsByClassName("background")[0].style.background = "linear-gradient(0deg, rgb(241, 211, 13) 0%, rgb(71, 6, 118) 100%)";
+                        }else{
+                            document.getElementsByClassName("background")[0].style.background = "linear-gradient(0deg, rgb(71, 6, 118)0%,  rgb(11, 3, 80) 100%)";
+                            
+                        }
+                    }
+                }
+            }
         }
     }
 })
